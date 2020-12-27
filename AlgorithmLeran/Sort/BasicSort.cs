@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AlgorithmLeran.Sort
+namespace AlgorithmLearn.Sort
 {
     /// <summary>
     /// 基础排序算法
@@ -43,16 +43,16 @@ namespace AlgorithmLeran.Sort
             // 最外层循环，控制排序空间 没完成一轮内层循环排序空间的长度就-1
             for(int i = 0; i < arr.Length - 1; i++)
             {
-                int min = i;
+                int minIdx = i;
                 // 内层循环，在排序空间内选择最小的元素 和有序空间的最后一个元素交换
                 for(int j = i + 1; j < arr.Length; j++)
                 {
-                    if(arr[j] < arr[i])
+                    if(arr[j] < arr[minIdx])
                     {
-                        min = j;
+                        minIdx = j;
                     }
                 }
-                SortHelper.Swap(arr, i, min);
+                SortHelper.Swap(arr, i, minIdx);
             }
         }
         #endregion

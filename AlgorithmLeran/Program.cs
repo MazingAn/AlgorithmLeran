@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AlgorithmLeran
+namespace AlgorithmLearn
 {
     class Program
     {
@@ -11,7 +11,7 @@ namespace AlgorithmLeran
             int[] arr = Sort.SortHelper.RandomArr();
             Console.WriteLine("Before Sort:");
             Sort.SortHelper.Print(arr);
-            Sort.SortHelper.Print(arr);
+            Console.WriteLine("AfterSort");
             Sort.BasicSort.BubbleSort(arr);
             Sort.SortHelper.Print(arr);
             Console.WriteLine("=====================================");
@@ -45,12 +45,12 @@ namespace AlgorithmLeran
             Console.WriteLine("=====================================");
 
             Console.WriteLine("归并排序：");
-            int[] arr1 = {1,4,5,8,2,3,6,7};
+            arr = Sort.SortHelper.RandomArr(16);
             Console.WriteLine("Before Sort:");
-            Sort.SortHelper.Print(arr1);
-            Sort.AdvanceSort.Merge(arr1, 0, 3, arr1.Length - 1);
+            Sort.SortHelper.Print(arr);
+            Sort.AdvanceSort.MergeSort(arr, 0, arr.Length-1);
             Console.WriteLine("AfterSort:");
-            Sort.SortHelper.Print(arr1);
+            Sort.SortHelper.Print(arr);
             Console.WriteLine("=====================================");
 
             Console.ReadKey();

@@ -2,19 +2,25 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AlgorithmLeran.Sort
+namespace AlgorithmLearn.Sort
 {
     public class SortHelper
     {
         #region 排序辅助函数
 
+        /// <summary>
+        /// 产生一个随机int数组
+        /// </summary>
+        /// <param name="size">数组的长度</param>
+        /// <returns></returns>
         public static int[] RandomArr(int size=10)
         {
-            Random rand = new Random(size);
+            
             int[] arr = new int[size];
-            for(int i = 0; i < size; i++)
+            Random rand = new Random();
+            for (int i = 0; i < size; i++)
             {
-                arr[i] = rand.Next(size);
+                arr[i] = rand.Next(0,size * 3);
             }
             return arr;
         }
