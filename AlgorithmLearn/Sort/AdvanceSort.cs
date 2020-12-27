@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AlgorithmLeran.Sort
+namespace AlgorithmLearn.Sort
 {
     /// <summary>
     /// 高级排序算法
@@ -42,31 +42,52 @@ namespace AlgorithmLeran.Sort
         }
         #endregion
 
+
+
         #region 归并排序
-        public static void Merge(int[]arr, int leftPtr,  int rightPtr, int rightBound)
+        public static void MergeSort(int[] arr, int left, int right)
         {
-            int[] temp = new int[rightBound - leftPtr + 1];
-            int mid = rightPtr - 1;
-            int i = leftPtr;
-            int j = rightPtr;
+            // 只有一个元素 直接返回
+            if (left == right) return;
+            int mid = left + (right - left) / 2;
+            // 排序左半部分
+            MergeSort(arr, left, mid);
+            // 排序右半部分
+            MergeSort(arr, mid + 1, right);
+            // 合并左右两部分
+            Merge(arr, left, mid, right);
+        }
+        
+        private static void Merge(int[]arr, int left,  int mid, int right)
+        {
+            int[] temp = new int[right - left + 1];
+            int i = left;
+            int j = mid + 1;
             int k = 0;
 
-            while (i <= mid && j <= rightBound)
+            // 左半部分还没有放完  右半部分也没有放完  取左半部分当前位置和右半部分当前位置最小的一个放入k的位置中
+            while (i <= mid && j <= right)
             {
                 temp[k++] = arr[i] <= arr[j] ? arr[i++] : arr[j++];
             }
             
+            // 左半部分还没有放完 右半部分已经放完了 左半部分剩下的全部顺序放入 k以后的位置
             while (i <= mid)
             {
                 temp[k++] = arr[i++];
             }
 
-            while (j <= rightBound)
+            // 右半部分还么有放完  左半部分已经全部访问 右半部分剩下的全部顺序放入k以后的位置
+            while (j <= right)
             {
                 temp[k++] = arr[j++];
             }
 
-            SortHelper.Print(temp);
+            // 拷贝合并后的内容到原始数组中对应的位置上去  这一个小区间就已经排好序了
+            for(int m = 0; m < temp.Length; m++)
+            {
+                arr[left + m] = temp[m];
+            }
         }
         #endregion
     }
